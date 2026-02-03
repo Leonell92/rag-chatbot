@@ -243,6 +243,30 @@ st.markdown("""
         box-shadow: 0 6px 25px rgba(0,0,0,0.15);
     }
     
+    /* Example Questions Styling - Light Mode */
+    .example-questions {
+        background: white !important;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    
+    .example-questions div[style*="display: grid"] > div {
+        background: #f8f9fa !important;
+        padding: 1rem;
+        border-radius: 10px;
+        border-left: 4px solid #667eea;
+    }
+    
+    .example-questions strong {
+        color: #333 !important;
+        font-weight: 600;
+    }
+    
+    .example-questions div[style*="display: grid"] > div {
+        color: #666 !important;
+    }
+    
     /* Source Citation Styling */
     .source-citation {
         background: #f8f9fa;
