@@ -629,9 +629,16 @@ if st.session_state.dark_mode:
     
     .example-questions strong,
     .example-questions div strong,
-    .example-questions div div strong {
+    .example-questions div div strong,
+    .example-questions div[style*="display: grid"] strong,
+    .example-questions div[style*="display: grid"] > div strong,
+    .example-questions div[style*="padding"] strong,
+    div.example-questions strong,
+    div[style*="display: grid"] strong,
+    div[style*="padding: 1rem"] strong {
         color: #ffffff !important;
         font-weight: 600 !important;
+        text-shadow: none !important;
     }
     
     .example-questions div,
@@ -652,12 +659,16 @@ if st.session_state.dark_mode:
     </style>
     """, unsafe_allow_html=True)
 
-# Title with modern styling - Dark blue color with class
-st.markdown("""
-<div class="main-title" style="text-align: center; padding: 2rem 0;">
-    <h1 style="color: #1e3a8a !important; font-size: 3.5rem; font-weight: 700; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
-        📚 RAG Knowledge Base
-    </h1>
+    st.markdown("""
+    <div class="main-title" style="text-align: center; padding: 2rem 0;">
+        <h1 style="color: #1e3a8a !important; font-size: 3.5rem; font-weight: 700; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+            📚 RAG Knowledge Base
+        </h1>
+        <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; margin-top: 0;">
+            Intelligent Document Q&A powered by AI
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
     <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; margin-top: 0;">
         Intelligent Document Q&A powered by AI
     </p>
