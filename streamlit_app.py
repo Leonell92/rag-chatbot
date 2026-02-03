@@ -755,7 +755,7 @@ if st.session_state.documents_processed:
     st.markdown("""
     <div style="background: white; padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
         <h2 style="color: #333; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
-            💬 Ask Questions
+            Chat Ask Questions
         </h2>
         <p style="color: #666; margin: 0.5rem 0 0 0;">Get intelligent answers from your documents</p>
     </div>
@@ -791,8 +791,8 @@ if st.session_state.documents_processed:
                                 {source.page_content[:400]}{'...' if len(source.page_content) > 400 else ''}
                             </div>
                             <div style="font-size: 0.85rem; color: #888; display: flex; gap: 1rem;">
-                                <span>📄 {source.metadata.get('source_file', 'N/A')}</span>
-                                <span>📃 Page {source.metadata.get('page', 'N/A')}</span>
+                                <span>File: {source.metadata.get('source_file', 'N/A')}</span>
+                                <span>Page: {source.metadata.get('page', 'N/A')}</span>
                             </div>
                         </div>
                         """, unsafe_allow_html=True)
@@ -830,7 +830,7 @@ if st.session_state.documents_processed:
     if st.session_state.get('example_clicked', False):
         st.markdown("""
         <div style="background: #f8f9fa; padding: 1rem; border-radius: 10px; margin-top: 1rem;">
-            <strong>💡 Try these questions:</strong>
+            <strong>Try these questions:</strong>
             <ul style="margin: 0.5rem 0 0 0; padding-left: 1.5rem;">
                 <li>What is this document about?</li>
                 <li>Summarize the key points</li>
@@ -876,7 +876,7 @@ else:
         <div style="text-align: center; margin-bottom: 3rem;">
             <h2 style="color: #333; font-size: 2.5rem; margin-bottom: 1rem;">Welcome to RAG Knowledge Base</h2>
             <p style="color: #666; font-size: 1.2rem; margin: 0;">
-                👈 Upload PDF documents in the sidebar to get started!
+                &lt;-- Upload PDF documents in the sidebar to get started!
             </p>
         </div>
     </div>
@@ -889,7 +889,7 @@ else:
     with col1:
         st.markdown("""
         <div class="feature-card">
-            <h3>📚 Multi-Document</h3>
+            <h3>Multi-Document</h3>
             <p>Upload and process multiple PDFs simultaneously. Perfect for research papers, books, and documentation.</p>
         </div>
         """, unsafe_allow_html=True)
@@ -897,7 +897,7 @@ else:
     with col2:
         st.markdown("""
         <div class="feature-card">
-            <h3>🧠 AI-Powered</h3>
+            <h3>AI-Powered</h3>
             <p>Semantic search understands meaning, not just keywords. Get intelligent answers from your documents.</p>
         </div>
         """, unsafe_allow_html=True)
@@ -905,7 +905,7 @@ else:
     with col3:
         st.markdown("""
         <div class="feature-card">
-            <h3>🔒 Privacy-First</h3>
+            <h3>Privacy-First</h3>
             <p>Local embeddings keep your data private. Only your questions are sent to the AI, not your documents.</p>
         </div>
         """, unsafe_allow_html=True)
@@ -916,19 +916,19 @@ else:
     <div class="example-questions" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
             <div style="padding: 1rem; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #667eea;">
-                <strong>📖 Content Analysis</strong><br>
+                <strong>Content Analysis</strong><br>
                 "What is this document about?"
             </div>
             <div style="padding: 1rem; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #667eea;">
-                <strong>📝 Summarization</strong><br>
+                <strong>Summarization</strong><br>
                 "Summarize the key findings"
             </div>
             <div style="padding: 1rem; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #667eea;">
-                <strong>🔍 Specific Queries</strong><br>
+                <strong>Specific Queries</strong><br>
                 "What recommendations are mentioned?"
             </div>
             <div style="padding: 1rem; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #667eea;">
-                <strong>💡 Deep Dive</strong><br>
+                <strong>Deep Dive</strong><br>
                 "Explain [topic] from the document"
             </div>
         </div>
@@ -939,10 +939,10 @@ else:
 st.markdown("""
 <div style="text-align: center; padding: 2rem 0; color: rgba(255,255,255,0.8); margin-top: 3rem;">
     <p style="margin: 0.5rem 0;">
-        Built with ❤️ using <strong>Streamlit</strong> + <strong>LangChain</strong> + <strong>Groq</strong> + <strong>ChromaDB</strong>
+        Built with Love using <strong>Streamlit</strong> + <strong>LangChain</strong> + <strong>Groq</strong> + <strong>ChromaDB</strong>
     </p>
     <p style="margin: 0; font-size: 0.9rem;">
-        Powered by AI • Privacy-Focused • Open Source
+        Powered by AI - Privacy-Focused - Open Source
     </p>
 </div>
 """, unsafe_allow_html=True)
