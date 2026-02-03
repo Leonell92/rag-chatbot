@@ -669,11 +669,6 @@ if st.session_state.dark_mode:
         </p>
     </div>
     """, unsafe_allow_html=True)
-    <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; margin-top: 0;">
-        Intelligent Document Q&A powered by AI
-    </p>
-</div>
-""", unsafe_allow_html=True)
 
 # Sidebar - Document Upload
 with st.sidebar:
