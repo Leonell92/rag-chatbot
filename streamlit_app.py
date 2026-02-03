@@ -459,6 +459,8 @@ def get_qa_chain(vectorstore):
     """Create QA chain with Groq LLM using LCEL"""
     
     groq_api_key = os.getenv("GROQ_API_KEY")
+    if not groq_api_key and "GROQ_API_KEY" in st.secrets:
+        groq_api_key = st.secrets["GROQ_API_KEY"]
     
     if not groq_api_key or groq_api_key == "your_groq_api_key_here":
         st.error("⚠️ GROQ_API_KEY not found! Please set it in your .env file")
@@ -839,9 +841,11 @@ if st.session_state.documents_processed:
     if ask_button and question:
         with st.spinner("Thinking..."):
             try:
-                qa_chain, retriever = get_qa_chain(st.session_state.vectorstore)
+                result = get_qa_chain(st.session_state.vectorstore)
                 
-                if qa_chain:
+                if result:
+                    qa_chain, retriever = result
+                    
                     # Get source documents first (to verify retrieval)
                     sources = retriever.invoke(question)
                     
