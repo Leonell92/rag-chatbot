@@ -631,6 +631,7 @@ if st.session_state.dark_mode:
     .example-questions div strong,
     .example-questions div div strong {
         color: #ffffff !important;
+        font-weight: 600 !important;
     }
     
     .example-questions div,
@@ -642,6 +643,11 @@ if st.session_state.dark_mode:
     /* Override all inline text colors in example questions */
     .example-questions [style*="color"] {
         color: #e2e8f0 !important;
+    }
+    
+    /* Ensure example question headers are visible in dark mode */
+    .example-questions div[style*="display: grid"] > div strong {
+        color: #ffffff !important;
     }
     </style>
     """, unsafe_allow_html=True)
