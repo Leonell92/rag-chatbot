@@ -223,9 +223,19 @@ st.markdown("""
         background: white;
         padding: 2rem;
         border-radius: 15px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        margin: 1rem 0;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         transition: transform 0.3s ease;
+    }
+    
+    .feature-card h3 {
+        color: #667eea !important;
+        margin-top: 0 !important;
+    }
+    
+    .feature-card p {
+        color: #374151 !important;
+        font-size: 1rem;
+        line-height: 1.6;
     }
     
     .feature-card:hover {
@@ -844,7 +854,7 @@ else:
     with col1:
         st.markdown("""
         <div class="feature-card">
-            <h3 style="color: #667eea; margin-top: 0;">📚 Multi-Document</h3>
+            <h3>📚 Multi-Document</h3>
             <p>Upload and process multiple PDFs simultaneously. Perfect for research papers, books, and documentation.</p>
         </div>
         """, unsafe_allow_html=True)
@@ -852,7 +862,7 @@ else:
     with col2:
         st.markdown("""
         <div class="feature-card">
-            <h3 style="color: #667eea; margin-top: 0;">🧠 AI-Powered</h3>
+            <h3>🧠 AI-Powered</h3>
             <p>Semantic search understands meaning, not just keywords. Get intelligent answers from your documents.</p>
         </div>
         """, unsafe_allow_html=True)
@@ -860,7 +870,7 @@ else:
     with col3:
         st.markdown("""
         <div class="feature-card">
-            <h3 style="color: #667eea; margin-top: 0;">🔒 Privacy-First</h3>
+            <h3>🔒 Privacy-First</h3>
             <p>Local embeddings keep your data private. Only your questions are sent to the AI, not your documents.</p>
         </div>
         """, unsafe_allow_html=True)
