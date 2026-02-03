@@ -727,13 +727,7 @@ with st.sidebar:
     
     # Status indicator with better styling
     if st.session_state.documents_processed:
-        st.markdown("""
-        <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); 
-                    color: white; padding: 1rem; border-radius: 10px; 
-                    text-align: center; font-weight: 600; margin: 1rem 0;">
-            ✅ Documents Ready for Q&A
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown("""<div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 1rem; border-radius: 10px; text-align: center; font-weight: 600; margin: 1rem 0;">Documents Ready for Q&A</div>""", unsafe_allow_html=True)
         
         if st.button("🗑️ Clear Database"):
             st.session_state.vectorstore = None
