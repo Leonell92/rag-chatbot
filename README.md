@@ -1,229 +1,87 @@
-# 📚 RAG Chatbot - Live Build
+# RAG Knowledge Base
 
-## What We Just Built
+An intelligent document Q&A chatbot that lets you upload PDFs and ask questions about their content. Built with Streamlit, LangChain, and Groq's free LLM API.
 
-A **Retrieval-Augmented Generation (RAG) chatbot** that:
-- ✅ Uploads and processes PDF documents
-- ✅ Answers questions about your documents
-- ✅ Provides source citations
-- ✅ Uses free Groq API (Llama 3.1 70B)
-- ✅ Runs embeddings locally (privacy-focused)
+## Features
 
-## 🚀 How to Run
+- Upload and process multiple PDF documents
+- Ask natural language questions about your documents
+- Get AI-generated answers with source citations
+- Privacy-focused: embeddings run locally, only queries are sent to the API
+- Clean, modern dark theme UI
 
-### Step 1: Install Dependencies
+## Quick Start
 
-Since we can't access PyPI in this environment, you'll need to run this on your local machine:
-
-```bash
-pip install streamlit langchain langchain-community chromadb pypdf python-dotenv sentence-transformers groq tiktoken
-```
-
-Or use the requirements.txt file:
+### Installation
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 2: Get Your Free Groq API Key
+### Setup
 
-1. Go to [console.groq.com](https://console.groq.com)
-2. Sign up (free, no credit card needed)
-3. Create an API key
-4. Copy it
+1. Get a free API key from [console.groq.com](https://console.groq.com) (no credit card required)
 
-### Step 3: Configure Your API Key
+2. Create a `.env` file in the project root:
+```
+GROQ_API_KEY=your_api_key_here
+```
 
-Create a `.env` file in this directory:
-
+3. Run the app:
 ```bash
-GROQ_API_KEY=your_actual_api_key_here
+streamlit run streamlit_app.py
 ```
 
-**Important:** Never commit your `.env` file to Git!
+The app will open at `http://localhost:8501`
 
-### Step 4: Run the App
+## Usage
 
-```bash
-streamlit run app.py
-```
+1. **Upload Documents**: Use the sidebar to upload one or more PDF files
+2. **Process**: Click "Click to Process Documents" to index your files
+3. **Ask Questions**: Type your question in the input field and click "Ask Question"
+4. **View Sources**: Expand the sources section to see which parts of your documents were used
 
-The app will open in your browser at `http://localhost:8501`
+## Tech Stack
 
-## 📖 How to Use
+- **Frontend**: Streamlit
+- **LLM**: Groq API (Llama 3.1 8B Instant)
+- **Embeddings**: HuggingFace sentence-transformers (all-MiniLM-L6-v2)
+- **Vector Database**: ChromaDB
+- **Framework**: LangChain
+- **PDF Processing**: PyPDF
 
-### Upload Documents
-1. Click the sidebar
-2. Upload one or more PDF files
-3. Click "Process Documents"
-4. Wait for confirmation
+## How It Works
 
-### Ask Questions
-1. Type your question in the text box
-2. Click "Ask"
-3. View the answer with source citations
-4. Click "View Sources" to see exact passages
+The app uses Retrieval-Augmented Generation (RAG):
 
-### Example Questions
-- "What is this document about?"
-- "Summarize the key points"
-- "What are the main findings?"
-- "List all recommendations mentioned"
+1. PDFs are split into chunks and converted to vector embeddings
+2. When you ask a question, it's also converted to an embedding
+3. The system finds the most relevant document chunks using similarity search
+4. These chunks are sent to the LLM along with your question
+5. The LLM generates an answer based on the retrieved context
 
-## 🔧 How It Works
+## Deployment
 
-### The RAG Pipeline
+### Streamlit Cloud
 
-```
-PDF Upload → Text Extraction → Text Chunking → Embeddings → Vector Store
-                                                                  ↓
-User Question → Embedding → Similarity Search → Top 3 Chunks → LLM → Answer
-```
-
-### Key Components
-
-1. **PyPDF**: Extracts text from PDF files
-2. **Text Splitter**: Breaks documents into 1000-char chunks with 200-char overlap
-3. **HuggingFace Embeddings**: Converts text to vectors (all-MiniLM-L6-v2 model)
-4. **ChromaDB**: Stores and searches vector embeddings
-5. **Groq API**: Runs Llama 3.1 70B for answer generation
-6. **LangChain**: Orchestrates the entire RAG pipeline
-
-## 📂 Project Structure
-
-```
-rag-chatbot-live/
-├── app.py                    # Main application
-├── requirements.txt          # Python dependencies
-├── .env.example             # API key template
-├── test_document.md         # Sample document for testing
-├── chroma_db/               # Vector database (auto-created)
-└── README.md                # This file
-```
-
-## 🎯 What You Learned
-
-### Concepts
-- ✅ How RAG systems work
-- ✅ Vector embeddings and semantic search
-- ✅ Document chunking strategies
-- ✅ LLM integration with LangChain
-- ✅ Streamlit app development
-
-### Skills
-- ✅ Building production RAG apps
-- ✅ Using vector databases
-- ✅ API integration (Groq)
-- ✅ Error handling in AI systems
-- ✅ Creating interactive UIs
-
-## 🔥 Next Steps
-
-### Easy Enhancements
-1. **Add .docx support** - Install `python-docx` and add a docx loader
-2. **Export chat** - Add a button to download conversation history
-3. **Change model** - Try `llama-3.1-8b-instant` for faster responses or `mixtral-8x22b-instruct` for higher quality
-4. **Adjust chunks** - Experiment with `chunk_size` (500-2000)
-
-### Advanced Features
-1. **Conversation memory** - Remember previous questions
-2. **Multi-language** - Add language detection
-3. **OCR support** - Process scanned PDFs
-4. **Hybrid search** - Combine vector + keyword search
-5. **User authentication** - Add login system
-
-## 🐛 Troubleshooting
-
-### "GROQ_API_KEY not found"
-- Make sure `.env` file exists
-- Check that it contains `GROQ_API_KEY=your_key`
-- Restart the Streamlit app
-
-### "No module named..."
-```bash
-pip install --upgrade -r requirements.txt
-```
-
-### PDF won't process
-- Ensure PDF is text-based (not scanned)
-- Try a simpler PDF first
-- Check file isn't corrupted
-
-### Slow first query
-- Normal! Downloads embedding model (~80MB) once
-- Subsequent queries are fast
-
-## 📊 Performance Tips
-
-- **Optimal PDF size**: 1-50 pages
-- **Chunk size**: 1000 chars (default) works well
-- **Number of sources**: 3 chunks (default) is balanced
-- **Model choice**: Llama 3.1 70B is fast and capable
-
-## 🌟 Code Highlights
-
-### PDF Processing
-```python
-def load_and_process_pdf(uploaded_file):
-    # Creates temp file, extracts text, cleans up
-    # Returns list of Document objects
-```
-
-### Vector Store Creation
-```python
-def create_vectorstore(documents):
-    # Splits into chunks
-    # Creates embeddings locally
-    # Stores in ChromaDB
-```
-
-### QA Chain
-```python
-def get_qa_chain(vectorstore):
-    # Connects to Groq LLM
-    # Sets up retrieval
-    # Returns QA chain
-```
-
-## 💡 Tips for Success
-
-1. **Start simple**: Test with one small PDF first
-2. **Read errors**: Error messages are helpful
-3. **Experiment**: Try different settings
-4. **Ask specific questions**: Better questions = better answers
-5. **Check sources**: Verify citations are accurate
-
-## 🚀 Deployment
-
-### Streamlit Cloud (Free)
-1. Push to GitHub
+1. Push your code to GitHub
 2. Go to [share.streamlit.io](https://share.streamlit.io)
-3. Connect repo
-4. Add API key to Secrets
-5. Deploy!
+3. Connect your repository
+4. Add your `GROQ_API_KEY` in the Secrets section
+5. Deploy
 
-### Hugging Face Spaces
-1. Create Space with Streamlit SDK
-2. Upload files
-3. Add API key to Settings
-4. Auto-deploys
+Your users won't need to set up anything - they can just upload documents and start asking questions.
 
-## 📚 Resources
+## Troubleshooting
 
-- [Groq Documentation](https://console.groq.com/docs)
-- [LangChain Docs](https://python.langchain.com)
-- [ChromaDB Guide](https://docs.trychroma.com)
-- [Streamlit Tutorials](https://docs.streamlit.io)
+**API Key Error**: Make sure your `.env` file exists and contains the correct key
 
-## 🎉 Congratulations!
+**Module Not Found**: Run `pip install -r requirements.txt`
 
-You've built a production-ready RAG application! This demonstrates:
-- Modern AI stack proficiency
-- Full-stack development skills
-- Real-world problem solving
+**PDF Won't Process**: Ensure the PDF contains actual text (not scanned images)
 
-Add this to your portfolio and start applying for AI engineering roles!
+**Slow First Query**: The embedding model downloads on first use (~80MB). Subsequent queries are fast.
 
----
+## License
 
-**Built step-by-step | Ready for production | Perfect for portfolios**
+MIT
