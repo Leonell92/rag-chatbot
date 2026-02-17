@@ -10,6 +10,12 @@ An intelligent document Q&A chatbot that lets you upload PDFs and ask questions 
 - Privacy-focused: embeddings run locally, only queries are sent to the API
 - Clean, modern dark theme UI
 
+## Screenshots
+
+![Main Interface](screenshots/screenshot_1.png)
+![Asking a Question](screenshots/screenshot_2.png)
+![Answer with Sources](screenshots/screenshot_3.png)
+
 ## Quick Start
 
 ### Installation
