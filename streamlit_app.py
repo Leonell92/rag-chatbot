@@ -34,77 +34,48 @@ st.set_page_config(
     layout="wide"
 )
 
-# Custom CSS - World-class styling
+# Custom CSS - Dark theme matching screenshot
 st.markdown("""
 <style>
-    /* Dark Mode Toggle */
-    .dark-mode-toggle {
-        position: fixed;
-        top: 1rem;
-        right: 1rem;
-        z-index: 1000;
-        background: rgba(255,255,255,0.2);
-        border: none;
-        border-radius: 50px;
-        padding: 0.5rem 1rem;
-        color: white;
-        cursor: pointer;
-        font-size: 1.2rem;
-        backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
-    }
-    
-    .dark-mode-toggle:hover {
-        background: rgba(255,255,255,0.3);
-        transform: scale(1.05);
-    }
-    
-    /* Global Styles - Light Mode */
+    /* Global Styles - Light gray background */
     .main {
         padding: 2rem 3rem;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: #f0f2f5;
         min-height: 100vh;
-        transition: all 0.3s ease;
     }
-    
-    /* Dark mode is now handled via conditional CSS injection below */
-    
     
     /* Header Styling */
     h1 {
-        color: #ffffff !important;
+        color: #1a202c !important;
         font-size: 3rem !important;
         font-weight: 700 !important;
         text-align: center;
         margin-bottom: 0.5rem !important;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     }
     
-    /* Main Title - Dark Blue */
+    /* Main Title - Dark text */
     .main-title h1 {
-        color: #1e3a8a !important;
+        color: #1a202c !important;
         font-size: 3.5rem !important;
         font-weight: 700 !important;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.2) !important;
     }
     
-    /* Force dark blue on title */
+    /* Force dark text on title */
     div[style*="text-align: center"] h1 {
-        color: #1e3a8a !important;
+        color: #1a202c !important;
     }
     
-    /* Sidebar Styling */
+    /* Sidebar Styling - Dark navy */
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #1e3c72 0%, #2a5298 100%);
+        background: #1a202c;
     }
     
-    /* Sidebar Headers - Enhanced Visibility */
+    /* Sidebar Headers - White text */
     [data-testid="stSidebar"] h2,
     [data-testid="stSidebar"] .stMarkdown h2 {
         color: #ffffff !important;
         font-size: 1.8rem !important;
         font-weight: 700 !important;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         margin-bottom: 1.5rem !important;
         padding: 0.5rem 0 !important;
     }
@@ -113,7 +84,6 @@ st.markdown("""
         color: #ffffff !important;
         font-size: 1.4rem !important;
         font-weight: 600 !important;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
     
     /* Sidebar Text Visibility */
@@ -141,10 +111,32 @@ st.markdown("""
     
     [data-testid="stSidebar"] .stFileUploader section {
         border-color: rgba(255,255,255,0.3) !important;
+        background: rgba(255,255,255,0.1) !important;
+    }
+    
+    [data-testid="stSidebar"] .stFileUploader section small,
+    [data-testid="stSidebar"] .stFileUploader section div,
+    [data-testid="stSidebar"] .stFileUploader section span {
+        color: #ffffff !important;
+    }
+    
+    /* Uploaded file text styling */
+    [data-testid="stSidebar"] [data-testid="stFileUploaderFileName"],
+    [data-testid="stSidebar"] [data-testid="stFileUploaderFileSize"] {
+        color: #ffffff !important;
+    }
+    
+    [data-testid="stSidebar"] .stFileUploader li {
+        color: #ffffff !important;
+    }
+    
+    [data-testid="stSidebar"] .stFileUploader small {
+        color: #ffffff !important;
+        opacity: 1 !important;
     }
     
     [data-testid="stSidebar"] .stFileUploader section button {
-        background: #1e40af !important;
+        background: #3b5bdb !important;
         color: #ffffff !important;
         border: none !important;
         font-weight: 600 !important;
@@ -159,34 +151,31 @@ st.markdown("""
     /* Button Styling */
     .stButton>button {
         width: 100%;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: #3b5bdb;
         color: white;
         border: none;
         padding: 0.75rem 1.5rem;
         border-radius: 10px;
         font-weight: 600;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
     }
     
     .stButton>button:hover {
+        background: #2f4bb8;
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
     }
     
-    /* Sidebar Button - Dark Blue Background */
+    /* Sidebar Button - Blue */
     [data-testid="stSidebar"] .stButton>button {
-        background: #1e40af !important;
+        background: #3b5bdb !important;
         color: #ffffff !important;
         font-weight: 700 !important;
         font-size: 1.05rem !important;
         padding: 1rem 1.5rem !important;
-        box-shadow: 0 4px 15px rgba(30, 64, 175, 0.4) !important;
     }
     
     [data-testid="stSidebar"] .stButton>button:hover {
-        background: #1e3a8a !important;
-        box-shadow: 0 6px 20px rgba(30, 64, 175, 0.6) !important;
+        background: #2f4bb8 !important;
     }
     
     /* Chat Message Bubbles */
@@ -194,7 +183,6 @@ st.markdown("""
         padding: 1.5rem;
         border-radius: 15px;
         margin-bottom: 1rem;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         animation: fadeIn 0.5s ease-in;
     }
     
@@ -204,89 +192,102 @@ st.markdown("""
     }
     
     .chat-question {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: #3b5bdb;
         color: white;
-        margin-left: 2rem;
         border-bottom-left-radius: 5px;
     }
     
     .chat-answer {
-        background: #ffffff;
-        color: #333;
+        background: #2d3748;
+        color: #ffffff;
         margin-right: 2rem;
-        border: 1px solid #e0e0e0;
         border-bottom-right-radius: 5px;
     }
     
-    /* Card Styling */
+    /* Card Styling - Dark navy cards */
     .feature-card {
-        background: white;
+        background: #2d3748;
         padding: 2rem;
         border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         transition: transform 0.3s ease;
     }
     
     .feature-card h3 {
-        color: #667eea !important;
+        color: #ffffff !important;
         margin-top: 0 !important;
     }
     
     .feature-card p {
-        color: #374151 !important;
+        color: #cbd5e0 !important;
         font-size: 1rem;
         line-height: 1.6;
     }
     
     .feature-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+        box-shadow: 0 6px 25px rgba(0,0,0,0.3);
     }
     
-    /* Example Questions Styling - Light Mode */
+    /* Example Questions Styling - Dark cards */
     .example-questions {
-        background: white !important;
+        background: #2d3748 !important;
         padding: 2rem;
         border-radius: 15px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     }
     
     .example-questions div[style*="display: grid"] > div {
-        background: #f8f9fa !important;
+        background: #1a202c !important;
         padding: 1rem;
         border-radius: 10px;
-        border-left: 4px solid #667eea;
+        border-left: 4px solid #3b5bdb;
     }
     
     .example-questions strong {
-        color: #333 !important;
+        color: #ffffff !important;
         font-weight: 600;
     }
     
     .example-questions div[style*="display: grid"] > div {
-        color: #666 !important;
+        color: #cbd5e0 !important;
     }
     
     /* Source Citation Styling */
     .source-citation {
-        background: #f8f9fa;
+        background: #1a202c;
         padding: 1rem;
         border-radius: 10px;
-        border-left: 4px solid #667eea;
+        border-left: 4px solid #3b5bdb;
         margin: 0.5rem 0;
+        color: #cbd5e0;
     }
     
-    /* Input Styling */
+    /* Input Styling - More visible */
     .stTextInput>div>div>input {
         border-radius: 10px;
-        border: 2px solid #e0e0e0;
+        border: 2px solid #3b5bdb !important;
         padding: 0.75rem 1rem;
         font-size: 1rem;
+        background: #1a202c !important;
+        color: #ffffff;
+    }
+    
+    .stTextInput>div>div>input::placeholder {
+        color: #718096;
     }
     
     .stTextInput>div>div>input:focus {
-        border-color: #667eea;
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        border-color: #3b5bdb !important;
+        box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.3) !important;
+        background: #1a202c !important;
+    }
+    
+    .stTextInput label {
+        color: #ffffff !important;
+        font-weight: 600 !important;
+        font-size: 1.1rem !important;
+        margin-bottom: 0.5rem !important;
     }
     
     /* Status Indicators */
@@ -303,13 +304,21 @@ st.markdown("""
         color: white;
     }
     
-    /* Welcome Screen */
+    /* Welcome Screen - Dark card */
     .welcome-container {
-        background: white;
+        background: #2d3748;
         padding: 3rem;
         border-radius: 20px;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         margin: 2rem 0;
+    }
+    
+    .welcome-container h2 {
+        color: #ffffff !important;
+    }
+    
+    .welcome-container p {
+        color: #cbd5e0 !important;
     }
     
     /* Hide Streamlit branding */
@@ -323,17 +332,17 @@ st.markdown("""
     }
     
     ::-webkit-scrollbar-track {
-        background: #f1f1f1;
+        background: #2d3748;
         border-radius: 10px;
     }
     
     ::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: #3b5bdb;
         border-radius: 10px;
     }
     
     ::-webkit-scrollbar-thumb:hover {
-        background: #764ba2;
+        background: #2f4bb8;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -350,8 +359,6 @@ if 'documents_processed' not in st.session_state:
     st.session_state.documents_processed = False
 if 'example_clicked' not in st.session_state:
     st.session_state.example_clicked = False
-if 'dark_mode' not in st.session_state:
-    st.session_state.dark_mode = False
 
 # ============================================================================
 # FUNCTION 1: PDF PROCESSING
@@ -522,155 +529,17 @@ Provide a detailed answer based on the document content above:"""
 # USER INTERFACE
 # ============================================================================
 
-# Dark Mode Toggle - Top Right
-col1, col2 = st.columns([10, 1])
-with col2:
-    dark_mode_icon = "☀️" if st.session_state.dark_mode else "🌙"
-    dark_mode_label = "Light Mode" if st.session_state.dark_mode else "Dark Mode"
-    if st.button(dark_mode_icon, key="dark_mode_toggle", help=dark_mode_label):
-        st.session_state.dark_mode = not st.session_state.dark_mode
-        st.rerun()
-
-# Apply dark mode using pure CSS injection
-if st.session_state.dark_mode:
-    st.markdown("""
-    <style>
-    /* Dark Mode Override Styles */
-    .main {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
-    }
-    
-    [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%) !important;
-    }
-    
-    .chat-answer {
-        background: #1e293b !important;
-        color: #e2e8f0 !important;
-        border-color: #334155 !important;
-    }
-    
-    .feature-card,
-    .welcome-container {
-        background: #1e293b !important;
-        color: #e2e8f0 !important;
-    }
-    
-    .welcome-container h2,
-    .feature-card h3 {
-        color: #ffffff !important;
-    }
-    
-    .welcome-container p,
-    .feature-card p {
-        color: #cbd5e0 !important;
-    }
-    
-    .source-citation {
-        background: #1e293b !important;
-        color: #e2e8f0 !important;
-        border-left-color: #667eea !important;
-    }
-    
-    .stTextInput>div>div>input {
-        background: #1e293b !important;
-        color: #e2e8f0 !important;
-        border-color: #334155 !important;
-    }
-    
-    .stTextInput>div>div>input:focus {
-        border-color: #667eea !important;
-    }
-    
-    [style*="background: white"] {
-        background: #1e293b !important;
-        color: #e2e8f0 !important;
-    }
-    
-    [style*="color: #333"] {
-        color: #e2e8f0 !important;
-    }
-    
-    [style*="color: #666"] {
-        color: #cbd5e0 !important;
-    }
-    
-    [style*="background: #f8f9fa"] {
-        background: #0f172a !important;
-        color: #e2e8f0 !important;
-    }
-    
-    .stExpander {
-        background: #1e293b !important;
-    }
-    
-    .stExpander label {
-        color: #e2e8f0 !important;
-    }
-    
-    /* Dark mode title color adjustment */
-    .main-title h1 {
-        color: #60a5fa !important;
-    }
-    
-    /* Example questions section in dark mode - Ultra-specific selectors */
-    .example-questions,
-    .example-questions[style],
-    div.example-questions {
-        background: #1e293b !important;
-        color: #e2e8f0 !important;
-    }
-    
-    .example-questions div[style*="background"],
-    .example-questions > div[style],
-    .example-questions div[style*="display: grid"],
-    .example-questions div[style*="padding"] {
-        background: #334155 !important;
-        color: #e2e8f0 !important;
-    }
-    
-    .example-questions strong,
-    .example-questions div strong,
-    .example-questions div div strong,
-    .example-questions div[style*="display: grid"] strong,
-    .example-questions div[style*="display: grid"] > div strong,
-    .example-questions div[style*="padding"] strong,
-    div.example-questions strong,
-    div[style*="display: grid"] strong,
-    div[style*="padding: 1rem"] strong {
-        color: #ffffff !important;
-        font-weight: 600 !important;
-        text-shadow: none !important;
-    }
-    
-    .example-questions div,
-    .example-questions div div,
-    .example-questions * {
-        color: #e2e8f0 !important;
-    }
-    
-    /* Override all inline text colors in example questions */
-    .example-questions [style*="color"] {
-        color: #e2e8f0 !important;
-    }
-    
-    /* Ensure example question headers are visible in dark mode */
-    .example-questions div[style*="display: grid"] > div strong {
-        color: #ffffff !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-    st.markdown("""
-    <div class="main-title" style="text-align: center; padding: 2rem 0;">
-        <h1 style="color: #1e3a8a !important; font-size: 3.5rem; font-weight: 700; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
-            📚 RAG Knowledge Base
-        </h1>
-        <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; margin-top: 0;">
-            Intelligent Document Q&A powered by AI
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+# Header
+st.markdown("""
+<div class="main-title" style="text-align: center; padding: 2rem 0;">
+    <h1 style="color: #1a202c !important; font-size: 3.5rem; font-weight: 700; margin-bottom: 0.5rem;">
+        📚 RAG Knowledge Base
+    </h1>
+    <p style="color: #4a5568; font-size: 1.2rem; margin-top: 0;">
+        Intelligent Document Q&A powered by AI
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 # Sidebar - Document Upload
 with st.sidebar:
@@ -685,7 +554,7 @@ with st.sidebar:
     )
     
     if uploaded_files:
-        if st.button("📤 Upload & Process Documents", type="primary"):
+        if st.button("📤 Click to Process Documents", type="primary"):
             with st.spinner("Processing documents..."):
                 all_documents = []
                 
@@ -724,7 +593,7 @@ with st.sidebar:
     
     # Status indicator with better styling
     if st.session_state.documents_processed:
-        st.markdown("""<div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 1rem; border-radius: 10px; text-align: center; font-weight: 600; margin: 1rem 0;">Documents Ready for Q&A</div>""", unsafe_allow_html=True)
+        st.markdown("""<div style="background: #10b981; color: white; padding: 1rem; border-radius: 10px; text-align: center; font-weight: 600; margin: 1rem 0;">✅ Documents Ready for Q&A</div>""", unsafe_allow_html=True)
         
         if st.button("🗑️ Clear Database"):
             st.session_state.vectorstore = None
@@ -735,26 +604,15 @@ with st.sidebar:
             st.rerun()
     
     st.divider()
-    
-    # Instructions
-    st.markdown("### 🔑 Setup")
-    st.markdown("""
-    1. Get free API key: [console.groq.com](https://console.groq.com)
-    2. Create `.env` file:
-       ```
-       GROQ_API_KEY=your_key
-       ```
-    3. Upload PDFs & ask!
-    """)
 
 # Main area - Chat Interface
 if st.session_state.documents_processed:
     st.markdown("""
-    <div style="background: white; padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-        <h2 style="color: #333; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
-            Chat Ask Questions
+    <div style="background: #2d3748; padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+        <h2 style="color: #ffffff; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+            💬 Ask Questions
         </h2>
-        <p style="color: #666; margin: 0.5rem 0 0 0;">Get intelligent answers from your documents</p>
+        <p style="color: #cbd5e0; margin: 0.5rem 0 0 0;">Get intelligent answers from your documents</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -772,8 +630,8 @@ if st.session_state.documents_processed:
             # Answer bubble
             st.markdown(f"""
             <div class="chat-message chat-answer" style="margin-bottom: 1.5rem;">
-                <div style="font-weight: 600; margin-bottom: 0.5rem; color: #667eea; font-size: 0.9rem;">Answer</div>
-                <div style="line-height: 1.8; color: #333;">{answer}</div>
+                <div style="font-weight: 600; margin-bottom: 0.5rem; color: #3b5bdb; font-size: 0.9rem;">Answer</div>
+                <div style="line-height: 1.8; color: #ffffff;">{answer}</div>
             </div>
             """, unsafe_allow_html=True)
             
@@ -799,7 +657,7 @@ if st.session_state.documents_processed:
     
     # Question input with modern styling
     st.markdown("""
-    <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-top: 2rem;">
+    <div style="background: #2d3748; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); margin-top: 2rem;">
     """, unsafe_allow_html=True)
     
     question = st.text_input(
@@ -826,8 +684,8 @@ if st.session_state.documents_processed:
     # Show example questions if button clicked
     if st.session_state.get('example_clicked', False):
         st.markdown("""
-        <div style="background: #f8f9fa; padding: 1rem; border-radius: 10px; margin-top: 1rem;">
-            <strong>Try these questions:</strong>
+        <div style="background: #1a202c; padding: 1rem; border-radius: 10px; margin-top: 1rem; color: #cbd5e0;">
+            <strong style="color: #ffffff;">Try these questions:</strong>
             <ul style="margin: 0.5rem 0 0 0; padding-left: 1.5rem;">
                 <li>What is this document about?</li>
                 <li>Summarize the key points</li>
@@ -936,7 +794,7 @@ else:
 
 # Footer with modern styling
 st.markdown("""
-<div style="text-align: center; padding: 2rem 0; color: rgba(255,255,255,0.8); margin-top: 3rem;">
+<div style="text-align: center; padding: 2rem 0; color: #718096; margin-top: 3rem;">
     <p style="margin: 0.5rem 0;">
         Built with Love using <strong>Streamlit</strong> + <strong>LangChain</strong> + <strong>Groq</strong> + <strong>ChromaDB</strong>
     </p>
