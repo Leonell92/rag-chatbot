@@ -324,6 +324,40 @@ st.markdown("""
     /* Hide Streamlit branding */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        .main {
+            padding: 1rem 0.5rem;
+        }
+        
+        h1 {
+            font-size: 2rem !important;
+        }
+        
+        .main-title h1 {
+            font-size: 2.2rem !important;
+        }
+        
+        .welcome-container {
+            padding: 1.5rem;
+        }
+        
+        .feature-card {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .chat-message {
+            padding: 1rem;
+        }
+        
+        .chat-question, .chat-answer {
+            margin-left: 0;
+            margin-right: 0;
+            border-radius: 10px;
+        }
+    }
     /* Header must be visible for mobile sidebar toggle */
     header {visibility: visible;}
     
