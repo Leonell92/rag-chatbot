@@ -12,8 +12,13 @@ An intelligent document Q&A chatbot that lets you upload PDFs and ask questions 
 
 ## Screenshots
 
+### Main Interface (Welcome Screen)
 ![Main Interface](screenshots/screenshot_1.png)
+
+### Asking a Question
 ![Asking a Question](screenshots/screenshot_2.png)
+
+### Answer with Sources
 ![Answer with Sources](screenshots/screenshot_3.png)
 
 ## Quick Start
