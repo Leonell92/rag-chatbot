@@ -46,18 +46,23 @@ st.markdown("""
     
     /* Header Styling */
     h1 {
-        color: #1a202c !important;
+        color: #1a202c;
         font-size: 3rem !important;
         font-weight: 700 !important;
         text-align: center;
         margin-bottom: 0.5rem !important;
     }
     
-    /* Main Title - Dark text */
+    /* Main Title - Dark text by default */
     .main-title h1 {
-        color: #1a202c !important;
+        color: #1a202c;
         font-size: 3.5rem !important;
         font-weight: 700 !important;
+    }
+    
+    .main-title p {
+        color: #4a5568;
+        font-size: 1.2rem;
     }
     
     /* Force dark text on title */
@@ -357,6 +362,15 @@ st.markdown("""
             margin-right: 0;
             border-radius: 10px;
         }
+        
+        /* Force white text on mobile for main title */
+        h1, .main-title h1 {
+            color: #ffffff !important;
+        }
+        
+        .main-title p {
+            color: #e2e8f0 !important;
+        }
     }
     /* Header must be visible for mobile sidebar toggle */
     header {visibility: visible;}
@@ -567,10 +581,10 @@ Provide a detailed answer based on the document content above:"""
 # Header
 st.markdown("""
 <div class="main-title" style="text-align: center; padding: 2rem 0;">
-    <h1 style="color: #1a202c !important; font-size: 3.5rem; font-weight: 700; margin-bottom: 0.5rem;">
+    <h1 style="font-size: 3.5rem; font-weight: 700; margin-bottom: 0.5rem;">
         📚 RAG Knowledge Base
     </h1>
-    <p style="color: #4a5568; font-size: 1.2rem; margin-top: 0;">
+    <p style="font-size: 1.2rem; margin-top: 0;">
         Intelligent Document Q&A powered by AI
     </p>
 </div>
